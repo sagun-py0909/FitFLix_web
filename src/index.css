@@ -1,0 +1,354 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Fitflix Design System - Orange, Red, Pink Gradient Branding */
+
+@layer base {
+  :root {
+    /* Dark fitness theme with Fitflix branding */
+    --background: 220 15% 8%;
+    --foreground: 210 20% 95%;
+
+    /* Card system with dark theme */
+    --card: 220 15% 12%;
+    --card-foreground: 210 20% 95%;
+
+    --popover: 220 15% 12%;
+    --popover-foreground: 210 20% 95%;
+
+    /* Fitflix primary - muted orange */
+    --primary: 25 85% 45%;
+    --primary-foreground: 220 15% 8%;
+
+    /* Fitflix secondary - muted red */
+    --secondary: 0 80% 50%;
+    --secondary-foreground: 210 20% 95%;
+
+    /* Muted tones for subtle elements */
+    --muted: 220 15% 18%;
+    --muted-foreground: 210 20% 65%;
+
+    /* Fitflix accent - muted pink */
+    --accent: 330 70% 55%;
+    --accent-foreground: 220 15% 8%;
+
+    /* Destructive - warning red */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 20% 95%;
+
+    /* Borders and inputs */
+    --border: 220 15% 22%;
+    --input: 220 15% 18%;
+    --ring: 25 85% 45%;
+
+    /* Fitflix brand colors - muted versions */
+    --fitflix-orange: 25 85% 45%;
+    --fitflix-red: 0 80% 50%;
+    --fitflix-pink: 330 70% 55%;
+    --success: 140 100% 50%;
+    --warning: 45 100% 55%;
+
+    /* Fitflix gradients - muted versions */
+    --gradient-primary: linear-gradient(135deg, hsl(25 85% 45%), hsl(0 80% 50%));
+    --gradient-secondary: linear-gradient(135deg, hsl(0 80% 50%), hsl(330 70% 55%));
+    --gradient-hero: linear-gradient(135deg, hsl(25 85% 45% / 0.7), hsl(330 70% 55% / 0.7));
+    --gradient-card: linear-gradient(135deg, hsl(220 15% 12% / 0.8), hsl(220 15% 18% / 0.8));
+    --gradient-fitflix: linear-gradient(135deg, hsl(25 85% 45%), hsl(0 80% 50%), hsl(330 70% 55%));
+
+    /* Fitflix shadows - softer versions */
+    --shadow-primary: 0 10px 30px hsl(25 85% 45% / 0.2);
+    --shadow-secondary: 0 10px 30px hsl(0 80% 50% / 0.2);
+    --shadow-glow: 0 0 40px hsl(25 85% 45% / 0.3);
+    --shadow-fitflix: 0 15px 35px hsl(25 85% 45% / 0.15), 0 5px 15px hsl(330 70% 55% / 0.1);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 1rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Enhanced dark mode with Fitflix theme */
+    --background: 220 20% 5%;
+    --foreground: 210 20% 98%;
+
+    --card: 220 20% 8%;
+    --card-foreground: 210 20% 98%;
+
+    --popover: 220 20% 8%;
+    --popover-foreground: 210 20% 98%;
+
+    --primary: 25 80% 50%;
+    --primary-foreground: 220 20% 5%;
+
+    --secondary: 0 75% 55%;
+    --secondary-foreground: 210 20% 98%;
+
+    --muted: 220 20% 15%;
+    --muted-foreground: 210 20% 70%;
+
+    --accent: 330 65% 60%;
+    --accent-foreground: 220 20% 5%;
+
+    --destructive: 0 84% 65%;
+    --destructive-foreground: 210 20% 98%;
+
+    --border: 220 20% 20%;
+    --input: 220 20% 15%;
+    --ring: 185 100% 55%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    background-image: 
+      radial-gradient(circle at 20% 80%, hsl(185 100% 50% / 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, hsl(270 100% 65% / 0.1) 0%, transparent 50%);
+    
+    /* Improved mobile text rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary/80;
+  }
+
+  /* Mobile viewport fixes */
+  html {
+    touch-action: manipulation;
+  }
+
+  /* Prevent horizontal scroll on mobile */
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+  }
+}
+
+@layer components {
+  /* Fitness-specific component styles */
+  .btn-fitness {
+    @apply relative overflow-hidden rounded-2xl px-6 py-3 sm:px-8 sm:py-4 font-semibold transition-all duration-300 text-sm sm:text-base;
+    background: var(--gradient-primary);
+    box-shadow: var(--shadow-primary);
+  }
+  
+  .btn-fitness:hover {
+    @apply scale-105;
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .btn-fitness::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+    background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
+  }
+  
+  .btn-fitness:hover::before {
+    @apply opacity-100;
+  }
+
+  .card-fitness {
+    @apply relative overflow-hidden rounded-3xl border border-border/50 backdrop-blur-sm transition-all duration-300;
+    background: var(--gradient-card);
+  }
+  
+  .card-fitness:hover {
+    @apply scale-105 shadow-2xl border-primary/50;
+    box-shadow: var(--shadow-primary);
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+
+  .hero-title {
+    @apply text-4xl sm:text-6xl md:text-8xl font-black leading-none tracking-tight;
+  }
+
+  /* Mobile-optimized container */
+  .container {
+    @apply w-full px-4 sm:px-6 lg:px-8;
+    max-width: 100%;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      max-width: 640px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .container {
+      max-width: 768px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      max-width: 1024px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .container {
+      max-width: 1280px;
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .container {
+      max-width: 1536px;
+    }
+  }
+
+  /* Mobile-friendly animations */
+  @media (prefers-reduced-motion: reduce) {
+    .btn-fitness {
+      @apply transition-none;
+    }
+    
+    .btn-fitness:hover {
+      @apply scale-100;
+    }
+    
+    .card-fitness {
+      @apply transition-none;
+    }
+    
+    .card-fitness:hover {
+      @apply scale-100;
+    }
+  }
+
+  /* Improved touch targets for mobile */
+  .btn-fitness,
+  button,
+  [role="button"] {
+    @apply min-h-[44px] min-w-[44px];
+  }
+
+  /* Better mobile navigation */
+  .animate-fade-in {
+    animation: fadeIn 0.2s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* Mobile-specific optimizations */
+@media screen and (max-width: 767px) {
+  .hero-title {
+    @apply text-3xl leading-tight;
+  }
+  
+  .container {
+    @apply px-4;
+  }
+  
+  /* Improve mobile card layouts */
+  .card-fitness {
+    @apply mx-auto;
+    max-width: 100%;
+  }
+  
+  /* Better mobile button spacing */
+  .btn-fitness {
+    @apply px-6 py-3 text-sm;
+  }
+}
+
+/* Tablet optimizations */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .hero-title {
+    @apply text-5xl;
+  }
+  
+  .container {
+    @apply px-6;
+  }
+}
+
+/* Desktop optimizations */
+@media screen and (min-width: 1024px) {
+  .container {
+    @apply px-8;
+  }
+}
+
+/* Fitflix Brand Utilities - Muted Version */
+@layer utilities {
+  .fitflix-gradient {
+    background: linear-gradient(135deg, #d97706, #dc2626, #be185d);
+  }
+  
+  .fitflix-text {
+    @apply text-transparent bg-gradient-to-r from-orange-600 via-red-600 to-pink-600 bg-clip-text;
+  }
+  
+  .fitflix-text-light {
+    @apply text-transparent bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 bg-clip-text;
+  }
+  
+  .fitflix-hover {
+    @apply hover:text-transparent hover:bg-gradient-to-r hover:from-orange-600 hover:via-red-600 hover:to-pink-600 hover:bg-clip-text transition-all duration-300;
+  }
+  
+  .fitflix-shadow {
+    box-shadow: 0 10px 25px rgba(217, 119, 6, 0.15), 0 4px 12px rgba(190, 24, 93, 0.1);
+  }
+  
+  .fitflix-border {
+    border-image: linear-gradient(135deg, #d97706, #dc2626, #be185d) 1;
+  }
+}

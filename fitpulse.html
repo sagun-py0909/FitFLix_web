@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitPulse - Your Ultimate Fitness Companion</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-content">
+                <!-- Logo -->
+                <a href="#" class="nav-logo" onclick="showPage('home')">
+                    <div class="nav-logo-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6.5 6.5h11"/>
+                            <path d="M6.5 17.5h11"/>
+                            <path d="m6.5 6.5 1.5-1.5"/>
+                            <path d="m15 5 1.5 1.5"/>
+                            <path d="m6.5 17.5 1.5 1.5"/>
+                            <path d="m15 19 1.5-1.5"/>
+                        </svg>
+                    </div>
+                    <span class="nav-logo-text">FitPulse</span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="nav-desktop">
+                    <a href="#" class="nav-link" data-page="home" onclick="showPage('home')">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                            <polyline points="9,22 9,12 15,12 15,22"/>
+                        </svg>
+                        Home
+                    </a>
+                    <a href="#" class="nav-link" data-page="diet-nutrition" onclick="showPage('diet-nutrition')">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/>
+                        </svg>
+                        Diet & Nutrition
+                    </a>
+                    <a href="#" class="nav-link" data-page="exercise-tracker" onclick="showPage('exercise-tracker')">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/>
+                        </svg>
+                        Exercise Tracker
+                    </a>
+                    <a href="#" class="nav-link" data-page="leaderboards" onclick="showPage('leaderboards')">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
+                            <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
+                            <path d="M4 22h16"/>
+                            <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/>
+                            <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/>
+                            <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>
+                        </svg>
+                        Leaderboards
+                    </a>
+                    <a href="#" class="nav-link" data-page="profile" onclick="showPage('profile')">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                        Profile
+                    </a>
+                </div>
+
+                <!-- Desktop CTA -->
+                <div class="nav-cta">
+                    <button class="btn btn-outline">Login</button>
+                    <button class="btn btn-fitness">Start Your Journey</button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="4" x2="20" y1="12" y2="12"/>
+                        <line x1="4" x2="20" y1="6" y2="6"/>
+                        <line x1="4" x2="20" y1="18" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div class="mobile-menu" id="mobileMenu">
+                <div class="mobile-menu-content">
+                    <a href="#" class="mobile-nav-link" data-page="home" onclick="showPage('home'); toggleMobileMenu()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                            <polyline points="9,22 9,12 15,12 15,22"/>
+                        </svg>
+                        Home
+                    </a>
+                    <a href="#" class="mobile-nav-link" data-page="diet-nutrition" onclick="showPage('diet-nutrition'); toggleMobileMenu()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/>
+                        </svg>
+                        Diet & Nutrition
+                    </a>
+                    <a href="#" class="mobile-nav-link" data-page="exercise-tracker" onclick="showPage('exercise-tracker'); toggleMobileMenu()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/>
+                        </svg>
+                        Exercise Tracker
+                    </a>
+                    <a href="#" class="mobile-nav-link" data-page="leaderboards" onclick="showPage('leaderboards'); toggleMobileMenu()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
+                            <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
+                            <path d="M4 22h16"/>
+                            <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/>
+                            <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/>
+                            <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>
+                        </svg>
+                        Leaderboards
+                    </a>
+                    <a href="#" class="mobile-nav-link" data-page="profile" onclick="showPage('profile'); toggleMobileMenu()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                        Profile
+                    </a>
+                    <div class="mobile-cta">
+                        <button class="btn btn-outline">Login</button>
+                        <button class="btn btn-fitness">Start Your Journey</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="home-page" class="page active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-bg"></div>
+            <div class="floating-element floating-1"></div>
+            <div class="floating-element floating-2"></div>
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Transform Your Fitness Journey</h1>
+                    <p class="hero-subtitle">
+                        Join thousands of fitness enthusiasts who trust FitPulse to track workouts, 
+                        monitor nutrition, and achieve their health goals with data-driven insights.
+                    </p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-white btn-lg" onclick="showPage('exercise-tracker')">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="5,3 19,12 5,21 5,3"/>
+                            </svg>
+                            Start Workout
+                        </button>
+                        <button class="btn btn-outline-white btn-lg" onclick="showPage('diet-nutrition')">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/>
+                            </svg>
+                            Track Nutrition
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="container" style="padding: 5rem 1rem;">
+            <div style="text-align: center; margin-bottom: 4rem;">
+                <h2 style="font-size: 2.5rem; font-weight: 900; margin-bottom: 1rem;" class="gradient-text">
+                    Everything You Need to Succeed
+                </h2>
+                <p style="font-size: 1.125rem; color: var(--muted-foreground);">
+                    Comprehensive tools to track, analyze, and optimize your fitness journey
+                </p>
+            </div>
+            
+            <div class="grid-2">
+                <div class="card card-fitness">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-primary">
+                                <path d="M6.5 6.5h11"/>
+                                <path d="M6.5 17.5h11"/>
+                                <path d="m6.5 6.5 1.5-1.5"/>
+                                <path d="m15 5 1.5 1.5"/>
+                                <path d="m6.5 17.5 1.5 1.5"/>
+                                <path d="m15 19 1.5-1.5"/>
+                            </svg>
+                            Exercise Tracking
+                        </div>
+                        <div class="card-description">
+                            Log workouts, track progress, and follow structured programs
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">✓ Pre-built workout programs</li>
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">✓ Real-time workout timer</li>
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">✓ Progress tracking</li>
+                            <li style="padding: 0.5rem 0;">✓ Personal records</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card card-fitness">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-secondary">
+                                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/>
+                            </svg>
+                            Nutrition Monitoring
+                        </div>
+                        <div class="card-description">
+                            Track calories, macros, and meals with intelligent insights
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">✓ Calorie tracking</li>
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">✓ Macro breakdown</li>
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">✓ Meal logging</li>
+                            <li style="padding: 0.5rem 0;">✓ Nutrition insights</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card card-fitness">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-accent">
+                                <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
+                                <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
+                                <path d="M4 22h16"/>
+                                <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/>
+                                <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/>
+                                <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>
+                            </svg>
+                            Community Leaderboards
+                        </div>
+                        <div class="card-description">
+                            Compete with friends and stay motivated with rankings
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">✓ Weekly challenges</li>
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">✓ Global rankings</li>
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">✓ Achievement badges</li>
+                            <li style="padding: 0.5rem 0;">✓ Social motivation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card card-fitness">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-orange">
+                                <polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/>
+                            </svg>
+                            Smart Analytics
+                        </div>
+                        <div class="card-description">
+                            Get personalized insights and data-driven recommendations
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">✓ Progress analytics</li>
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">✓ Trend analysis</li>
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">✓ Goal optimization</li>
+                            <li style="padding: 0.5rem 0;">✓ Performance insights</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="cta-decoration cta-decoration-1"></div>
+            <div class="cta-decoration cta-decoration-2"></div>
+            <div class="container">
+                <div class="cta-content">
+                    <h2 class="cta-title">Ready to Transform Your Fitness?</h2>
+                    <p class="cta-subtitle">
+                        Join over 100,000 users who have already started their journey to a healthier lifestyle
+                    </p>
+                    <div class="cta-buttons">
+                        <button class="btn btn-white btn-lg">
+                            Get Started Free
+                        </button>
+                        <button class="btn btn-outline-white btn-lg">
+                            View Demo
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

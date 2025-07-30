@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitPulse - Your Ultimate Fitness Companion</title>
+    <link rel="stylesheet" href="fitpulse-styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-content">
+                <!-- Logo -->
+                <a href="#" class="nav-logo" onclick="showPage('home')">
+                    <div class="nav-logo-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6.5 6.5h11"/>
+                            <path d="M6.5 17.5h11"/>
+                            <path d="m6.5 6.5 1.5-1.5"/>
+                            <path d="m15 5 1.5 1.5"/>
+                            <path d="m6.5 17.5 1.5 1.5"/>
+                            <path d="m15 19 1.5-1.5"/>
+                        </svg>
+                    </div>
+                    <span class="nav-logo-text">FitPulse</span>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <div class="nav-desktop">
+                    <a href="#" class="nav-link" data-page="home" onclick="showPage('home')">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                            <polyline points="9,22 9,12 15,12 15,22"/>
+                        </svg>
+                        Home
+                    </a>
+                    <a href="#" class="nav-link" data-page="diet-nutrition" onclick="showPage('diet-nutrition')">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/>
+                        </svg>
+                        Diet & Nutrition
+                    </a>
+                    <a href="#" class="nav-link" data-page="exercise-tracker" onclick="showPage('exercise-tracker')">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/>
+                        </svg>
+                        Exercise Tracker
+                    </a>
+                    <a href="#" class="nav-link" data-page="leaderboards" onclick="showPage('leaderboards')">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
+                            <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
+                            <path d="M4 22h16"/>
+                            <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/>
+                            <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/>
+                            <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>
+                        </svg>
+                        Leaderboards
+                    </a>
+                    <a href="#" class="nav-link" data-page="profile" onclick="showPage('profile')">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                        Profile
+                    </a>
+                </div>
+
+                <!-- Desktop CTA -->
+                <div class="nav-cta">
+                    <button class="btn btn-outline">Login</button>
+                    <button class="btn btn-fitness">Start Your Journey</button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="4" x2="20" y1="12" y2="12"/>
+                        <line x1="4" x2="20" y1="6" y2="6"/>
+                        <line x1="4" x2="20" y1="18" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div class="mobile-menu" id="mobileMenu">
+                <div class="mobile-menu-content">
+                    <a href="#" class="mobile-nav-link" data-page="home" onclick="showPage('home'); toggleMobileMenu()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                            <polyline points="9,22 9,12 15,12 15,22"/>
+                        </svg>
+                        Home
+                    </a>
+                    <a href="#" class="mobile-nav-link" data-page="diet-nutrition" onclick="showPage('diet-nutrition'); toggleMobileMenu()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/>
+                        </svg>
+                        Diet & Nutrition
+                    </a>
+                    <a href="#" class="mobile-nav-link" data-page="exercise-tracker" onclick="showPage('exercise-tracker'); toggleMobileMenu()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/>
+                        </svg>
+                        Exercise Tracker
+                    </a>
+                    <a href="#" class="mobile-nav-link" data-page="leaderboards" onclick="showPage('leaderboards'); toggleMobileMenu()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
+                            <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
+                            <path d="M4 22h16"/>
+                            <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/>
+                            <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/>
+                            <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>
+                        </svg>
+                        Leaderboards
+                    </a>
+                    <a href="#" class="mobile-nav-link" data-page="profile" onclick="showPage('profile'); toggleMobileMenu()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                        Profile
+                    </a>
+                    <div class="mobile-cta">
+                        <button class="btn btn-outline">Login</button>
+                        <button class="btn btn-fitness">Start Your Journey</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="home-page" class="page active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-bg"></div>
+            <div class="floating-element floating-1"></div>
+            <div class="floating-element floating-2"></div>
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Transform Your Fitness Journey</h1>
+                    <p class="hero-subtitle">
+                        Join thousands of fitness enthusiasts who trust FitPulse to track workouts, 
+                        monitor nutrition, and achieve their health goals with data-driven insights.
+                    </p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-white btn-lg" onclick="showPage('exercise-tracker')">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="5,3 19,12 5,21 5,3"/>
+                            </svg>
+                            Start Workout
+                        </button>
+                        <button class="btn btn-outline-white btn-lg" onclick="showPage('diet-nutrition')">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/>
+                            </svg>
+                            Track Nutrition
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="container" style="padding: 5rem 1rem;">
+            <div style="text-align: center; margin-bottom: 4rem;">
+                <h2 style="font-size: 2.5rem; font-weight: 900; margin-bottom: 1rem;" class="gradient-text">
+                    Everything You Need to Succeed
+                </h2>
+                <p style="font-size: 1.125rem; color: var(--muted-foreground);">
+                    Comprehensive tools to track, analyze, and optimize your fitness journey
+                </p>
+            </div>
+            
+            <div class="grid-2">
+                <div class="card card-fitness">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-primary">
+                                <path d="M6.5 6.5h11"/>
+                                <path d="M6.5 17.5h11"/>
+                                <path d="m6.5 6.5 1.5-1.5"/>
+                                <path d="m15 5 1.5 1.5"/>
+                                <path d="m6.5 17.5 1.5 1.5"/>
+                                <path d="m15 19 1.5-1.5"/>
+                            </svg>
+                            Exercise Tracking
+                        </div>
+                        <div class="card-description">
+                            Log workouts, track progress, and follow structured programs
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">✓ Pre-built workout programs</li>
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">✓ Real-time workout timer</li>
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">✓ Progress tracking</li>
+                            <li style="padding: 0.5rem 0;">✓ Personal records</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card card-fitness">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-secondary">
+                                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/>
+                            </svg>
+                            Nutrition Monitoring
+                        </div>
+                        <div class="card-description">
+                            Track calories, macros, and meals with intelligent insights
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">✓ Calorie tracking</li>
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">✓ Macro breakdown</li>
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">✓ Meal logging</li>
+                            <li style="padding: 0.5rem 0;">✓ Nutrition insights</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card card-fitness">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-accent">
+                                <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
+                                <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
+                                <path d="M4 22h16"/>
+                                <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/>
+                                <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/>
+                                <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>
+                            </svg>
+                            Community Leaderboards
+                        </div>
+                        <div class="card-description">
+                            Compete with friends and stay motivated with rankings
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">✓ Weekly challenges</li>
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">✓ Global rankings</li>
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">✓ Achievement badges</li>
+                            <li style="padding: 0.5rem 0;">✓ Social motivation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card card-fitness">
+                    <div class="card-header">
+                        <div class="card-title">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-orange">
+                                <polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/>
+                            </svg>
+                            Smart Analytics
+                        </div>
+                        <div class="card-description">
+                            Get personalized insights and data-driven recommendations
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">✓ Progress analytics</li>
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">✓ Trend analysis</li>
+                            <li style="padding: 0.5rem 0; border-bottom: 1px solid var(--border);">✓ Goal optimization</li>
+                            <li style="padding: 0.5rem 0;">✓ Performance insights</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="cta-decoration cta-decoration-1"></div>
+            <div class="cta-decoration cta-decoration-2"></div>
+            <div class="container">
+                <div class="cta-content">
+                    <h2 class="cta-title">Ready to Transform Your Fitness?</h2>
+                    <p class="cta-subtitle">
+                        Join over 100,000 users who have already started their journey to a healthier lifestyle
+                    </p>
+                    <div class="cta-buttons">
+                        <button class="btn btn-white btn-lg">
+                            Get Started Free
+                        </button>
+                        <button class="btn btn-outline-white btn-lg">
+                            View Demo
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Diet & Nutrition Page -->
+    <div id="diet-nutrition-page" class="page">
+        <div class="page-container">
+            <div class="page-header">
+                <h1 class="page-title gradient-text">Diet & Nutrition</h1>
+                <p class="page-subtitle">Track your meals, monitor calories, and optimize your nutrition for better results</p>
+            </div>
+
+            <div class="grid-2">
+                <!-- Daily Overview -->
+                <div class="card card-fitness">
+                    <div class="card-header">
+                        <div class="card-title">Today's Overview</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-number">1,450</div>
+                                <div class="stat-label">Calories Consumed</div>
+                                <div class="stat-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 72%;"></div>
+                                    </div>
+                                    <span class="progress-text">550 remaining</span>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">125g</div>
+                                <div class="stat-label">Protein</div>
+                                <div class="stat-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 83%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">180g</div>
+                                <div class="stat-label">Carbs</div>
+                                <div class="stat-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 60%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">45g</div>
+                                <div class="stat-label">Fat</div>
+                                <div class="stat-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 68%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Log Meal -->
+                <div class="card card-fitness">
+                    <div class="card-header">
+                        <div class="card-title">Log New Meal</div>
+                    </div>
+                    <div class="card-content">
+                        <form id="meal-form" onsubmit="logMeal(event)">
+                            <div class="form-group">
+                                <label class="form-label">Meal Name</label>
+                                <input type="text" class="form-input" placeholder="e.g., Grilled Chicken" required>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Calories</label>
+                                    <input type="number" class="form-input" placeholder="0" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Meal Type</label>
+                                    <select class="form-select">
+                                        <option value="breakfast">Breakfast</option>
+                                        <option value="lunch">Lunch</option>
+                                        <option value="dinner">Dinner</option>
+                                        <option value="snack">Snack</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Protein (g)</label>
+                                    <input type="number" class="form-input" placeholder="0">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Carbs (g)</label>
+                                    <input type="number" class="form-input" placeholder="0">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Fat (g)</label>
+                                    <input type="number" class="form-input" placeholder="0">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-full">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="12" x2="12" y1="5" y2="19"/>
+                                    <line x1="5" x2="19" y1="12" y2="12"/>
+                                </svg>
+                                Log Meal
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Recent Meals -->
+                <div class="card card-fitness">
+                    <div class="card-header">
+                        <div class="card-title">Recent Meals</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="meal-list">
+                            <div class="meal-item">
+                                <div class="meal-info">
+                                    <div class="meal-name">Greek Yogurt with Berries</div>
+                                    <div class="meal-meta">Breakfast • 8:30 AM</div>
+                                </div>
+                                <div class="meal-calories">240 cal</div>
+                            </div>
+                            <div class="meal-item">
+                                <div class="meal-info">
+                                    <div class="meal-name">Chicken Caesar Salad</div>
+                                    <div class="meal-meta">Lunch • 12:45 PM</div>
+                                </div>
+                                <div class="meal-calories">520 cal</div>
+                            </div>
+                            <div class="meal-item">
+                                <div class="meal-info">
+                                    <div class="meal-name">Protein Smoothie</div>
+                                    <div class="meal-meta">Snack • 3:15 PM</div>
+                                </div>
+                                <div class="meal-calories">180 cal</div>
+                            </div>
+                            <div class="meal-item">
+                                <div class="meal-info">
+                                    <div class="meal-name">Salmon with Quinoa</div>
+                                    <div class="meal-meta">Dinner • 7:00 PM</div>
+                                </div>
+                                <div class="meal-calories">510 cal</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nutrition Goals -->
+                <div class="card card-fitness">
+                    <div class="card-header">
+                        <div class="card-title">Nutrition Goals</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="goal-list">
+                            <div class="goal-item">
+                                <div class="goal-info">
+                                    <div class="goal-name">Daily Calorie Target</div>
+                                    <div class="goal-value">2,000 calories</div>
+                                </div>
+                                <div class="goal-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 72%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="goal-item">
+                                <div class="goal-info">
+                                    <div class="goal-name">Protein Target</div>
+                                    <div class="goal-value">150g daily</div>
+                                </div>
+                                <div class="goal-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 83%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="goal-item">
+                                <div class="goal-info">
+                                    <div class="goal-name">Water Intake</div>
+                                    <div class="goal-value">8 glasses daily</div>
+                                </div>
+                                <div class="goal-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 62%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Exercise Tracker Page -->
+    <div id="exercise-tracker-page" class="page">
+        <div class="page-container">
+            <div class="page-header">
+                <h1 class="page-title gradient-text">Exercise Tracker</h1>
+                <p class="page-subtitle">Track your workouts, monitor progress, and achieve your fitness goals</p>
+            </div>
+
+            <div class="grid-2">
+                <!-- Current Workout -->
+                <div class="card card-fitness">
+                    <div class="card-header">
+                        <div class="card-title">Active Workout</div>
+                    </div>
+                    <div class="card-content" id="active-workout">
+                        <div class="text-center">
+                            <div style="font-size: 1.125rem; color: var(--muted-foreground); margin-bottom: 1rem;">
+                                No active workout
+                            </div>
+                            <button class="btn btn-primary" onclick="showStartWorkoutOptions()">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polygon points="5,3 19,12 5,21 5,3"/>
+                                </svg>
+                                Start Workout
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Today's Progress -->
+                <div class="card card-fitness">
+                    <div class="card-header">
+                        <div class="card-title">Today's Progress</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-number">45</div>
+                                <div class="stat-label">Minutes Active</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">320</div>
+                                <div class="stat-label">Calories Burned</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">12</div>
+                                <div class="stat-label">Exercises Completed</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">1</div>
+                                <div class="stat-label">Workouts Done</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Workout Programs -->
+                <div class="card card-fitness">
+                    <div class="card-header">
+                        <div class="card-title">Workout Programs</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="workout-programs">
+                            <div class="workout-program-card" onclick="startWorkout('Push Day')">
+                                <div class="workout-info">
+                                    <div class="workout-name">Push Day</div>
+                                    <div class="workout-meta">Chest, Shoulders, Triceps • 45 min</div>
+                                </div>
+                                <div class="workout-difficulty">
+                                    <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+                                </div>
+                            </div>
+                            <div class="workout-program-card" onclick="startWorkout('Pull Day')">
+                                <div class="workout-info">
+                                    <div class="workout-name">Pull Day</div>
+                                    <div class="workout-meta">Back, Biceps • 40 min</div>
+                                </div>
+                                <div class="workout-difficulty">
+                                    <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+                                </div>
+                            </div>
+                            <div class="workout-program-card" onclick="startWorkout('Leg Day')">
+                                <div class="workout-info">
+                                    <div class="workout-name">Leg Day</div>
+                                    <div class="workout-meta">Quads, Hamstrings, Glutes • 50 min</div>
+                                </div>
+                                <div class="workout-difficulty">
+                                    <span class="difficulty-badge difficulty-advanced">Advanced</span>
+                                </div>
+                            </div>
+                            <div class="workout-program-card" onclick="startWorkout('HIIT Cardio')">
+                                <div class="workout-info">
+                                    <div class="workout-name">HIIT Cardio</div>
+                                    <div class="workout-meta">High Intensity Intervals • 30 min</div>
+                                </div>
+                                <div class="workout-difficulty">
+                                    <span class="difficulty-badge difficulty-beginner">Beginner</span>
+                                </div>
+                            </div>
+                            <div class="workout-program-card" onclick="startWorkout('Full Body')">
+                                <div class="workout-info">
+                                    <div class="workout-name">Full Body</div>
+                                    <div class="workout-meta">Complete workout • 60 min</div>
+                                </div>
+                                <div class="workout-difficulty">
+                                    <span class="difficulty-badge difficulty-intermediate">Intermediate</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Workouts -->
+                <div class="card card-fitness">
+                    <div class="card-header">
+                        <div class="card-title">Recent Workouts</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="workout-history">
+                            <div class="workout-history-item">
+                                <div class="workout-info">
+                                    <div class="workout-name">Push Day</div>
+                                    <div class="workout-meta">Today • 45 min • 320 cal</div>
+                                </div>
+                                <div class="workout-status completed">✓</div>
+                            </div>
+                            <div class="workout-history-item">
+                                <div class="workout-info">
+                                    <div class="workout-name">HIIT Cardio</div>
+                                    <div class="workout-meta">Yesterday • 30 min • 250 cal</div>
+                                </div>
+                                <div class="workout-status completed">✓</div>
+                            </div>
+                            <div class="workout-history-item">
+                                <div class="workout-info">
+                                    <div class="workout-name">Pull Day</div>
+                                    <div class="workout-meta">2 days ago • 40 min • 280 cal</div>
+                                </div>
+                                <div class="workout-status completed">✓</div>
+                            </div>
+                            <div class="workout-history-item">
+                                <div class="workout-info">
+                                    <div class="workout-name">Leg Day</div>
+                                    <div class="workout-meta">3 days ago • 50 min • 380 cal</div>
+                                </div>
+                                <div class="workout-status completed">✓</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leaderboards Page -->
+    <div id="leaderboards-page" class="page">
+        <div class="page-container">
+            <div class="page-header">
+                <h1 class="page-title gradient-text">Leaderboards</h1>
+                <p class="page-subtitle">Compete with the community and climb the rankings</p>
+            </div>
+
+            <div class="grid-2">
+                <!-- Top Performers -->
+                <div class="card card-fitness">
+                    <div class="card-header">
+                        <div class="card-title">Weekly Leaderboard</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="leaderboard">
+                            <div class="leaderboard-item rank-1">
+                                <div class="rank">#1</div>
+                                <div class="user-info">
+                                    <div class="user-name">Sarah Johnson</div>
+                                    <div class="user-stats">45 workouts • 12-day streak</div>
+                                </div>
+                                <div class="points">2,450 pts</div>
+                            </div>
+                            <div class="leaderboard-item rank-2">
+                                <div class="rank">#2</div>
+                                <div class="user-info">
+                                    <div class="user-name">Mike Chen</div>
+                                    <div class="user-stats">42 workouts • 8-day streak</div>
+                                </div>
+                                <div class="points">2,380 pts</div>
+                            </div>
+                            <div class="leaderboard-item rank-3">
+                                <div class="rank">#3</div>
+                                <div class="user-info">
+                                    <div class="user-name">Emma Wilson</div>
+                                    <div class="user-stats">38 workouts • 15-day streak</div>
+                                </div>
+                                <div class="points">2,290 pts</div>
+                            </div>
+                            <div class="leaderboard-item">
+                                <div class="rank">#4</div>
+                                <div class="user-info">
+                                    <div class="user-name">David Garcia</div>
+                                    <div class="user-stats">36 workouts • 6-day streak</div>
+                                </div>
+                                <div class="points">2,180 pts</div>
+                            </div>
+                            <div class="leaderboard-item">
+                                <div class="rank">#5</div>
+                                <div class="user-info">
+                                    <div class="user-name">Lisa Brown</div>
+                                    <div class="user-stats">33 workouts • 9-day streak</div>
+                                </div>
+                                <div class="points">2,050 pts</div>
+                            </div>
+                            <div class="leaderboard-item current-user">
+                                <div class="rank">#12</div>
+                                <div class="user-info">
+                                    <div class="user-name">You</div>
+                                    <div class="user-stats">28 workouts • 5-day streak</div>
+                                </div>
+                                <div class="points">1,840 pts</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Achievements -->
+                <div class="card card-fitness">
+                    <div class="card-header">
+                        <div class="card-title">Your Achievements</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="achievements">
+                            <div class="achievement earned">
+                                <div class="achievement-icon">🏃</div>
+                                <div class="achievement-info">
+                                    <div class="achievement-name">First Workout</div>
+                                    <div class="achievement-desc">Complete your first workout</div>
+                                </div>
+                            </div>
+                            <div class="achievement earned">
+                                <div class="achievement-icon">🔥</div>
+                                <div class="achievement-info">
+                                    <div class="achievement-name">5-Day Streak</div>
+                                    <div class="achievement-desc">Work out 5 days in a row</div>
+                                </div>
+                            </div>
+                            <div class="achievement earned">
+                                <div class="achievement-icon">💪</div>
+                                <div class="achievement-info">
+                                    <div class="achievement-name">Strength Builder</div>
+                                    <div class="achievement-desc">Complete 25 strength workouts</div>
+                                </div>
+                            </div>
+                            <div class="achievement locked">
+                                <div class="achievement-icon">⭐</div>
+                                <div class="achievement-info">
+                                    <div class="achievement-name">Fitness Fanatic</div>
+                                    <div class="achievement-desc">Work out for 30 days straight</div>
+                                </div>
+                            </div>
+                            <div class="achievement locked">
+                                <div class="achievement-icon">🏆</div>
+                                <div class="achievement-info">
+                                    <div class="achievement-name">Champion</div>
+                                    <div class="achievement-desc">Reach #1 on the leaderboard</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Weekly Challenges -->
+                <div class="card card-fitness">
+                    <div class="card-header">
+                        <div class="card-title">Weekly Challenges</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="challenges">
+                            <div class="challenge active">
+                                <div class="challenge-info">
+                                    <div class="challenge-name">Cardio King</div>
+                                    <div class="challenge-desc">Complete 150 minutes of cardio</div>
+                                </div>
+                                <div class="challenge-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 60%;"></div>
+                                    </div>
+                                    <span class="progress-text">90/150 min</span>
+                                </div>
+                            </div>
+                            <div class="challenge active">
+                                <div class="challenge-info">
+                                    <div class="challenge-name">Strength Squad</div>
+                                    <div class="challenge-desc">Complete 5 strength workouts</div>
+                                </div>
+                                <div class="challenge-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 80%;"></div>
+                                    </div>
+                                    <span class="progress-text">4/5 workouts</span>
+                                </div>
+                            </div>
+                            <div class="challenge completed">
+                                <div class="challenge-info">
+                                    <div class="challenge-name">Consistency Master</div>
+                                    <div class="challenge-desc">Work out 5 days this week</div>
+                                </div>
+                                <div class="challenge-status">✓ Complete</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Community Stats -->
+                <div class="card card-fitness">
+                    <div class="card-header">
+                        <div class="card-title">Community Stats</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="community-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">156,842</div>
+                                <div class="stat-label">Total Members</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">2.3M</div>
+                                <div class="stat-label">Workouts Completed</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">45.2M</div>
+                                <div class="stat-label">Calories Burned</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">892</div>
+                                <div class="stat-label">Active Today</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Page -->
+    <div id="profile-page" class="page">
+        <div class="page-container">
+            <div class="page-header">
+                <h1 class="page-title gradient-text">Your Profile</h1>
+                <p class="page-subtitle">Track your progress and manage your fitness journey</p>
+            </div>
+
+            <div class="grid-2">
+                <!-- User Info -->
+                <div class="card card-fitness">
+                    <div class="card-header">
+                        <div class="card-title">Profile Information</div>
+                        <button class="btn btn-outline btn-sm" onclick="editProfile()">Edit</button>
+                    </div>
+                    <div class="card-content">
+                        <div class="profile-info">
+                            <div class="profile-avatar">
+                                <div class="avatar-placeholder">
+                                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                        <circle cx="12" cy="7" r="4"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="profile-details">
+                                <h3>Alex Thompson</h3>
+                                <p>Fitness Enthusiast</p>
+                                <div class="profile-stats">
+                                    <div class="profile-stat">
+                                        <span class="stat-value">28</span>
+                                        <span class="stat-label">Age</span>
+                                    </div>
+                                    <div class="profile-stat">
+                                        <span class="stat-value">5'10"</span>
+                                        <span class="stat-label">Height</span>
+                                    </div>
+                                    <div class="profile-stat">
+                                        <span class="stat-value">180 lbs</span>
+                                        <span class="stat-label">Weight</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fitness Goals -->
+                <div class="card card-fitness">
+                    <div class="card-header">
+                        <div class="card-title">Fitness Goals</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="goals-list">
+                            <div class="goal-item">
+                                <div class="goal-info">
+                                    <div class="goal-name">Weight Loss</div>
+                                    <div class="goal-target">Target: 170 lbs</div>
+                                </div>
+                                <div class="goal-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 50%;"></div>
+                                    </div>
+                                    <span class="progress-text">5/10 lbs</span>
+                                </div>
+                            </div>
+                            <div class="goal-item">
+                                <div class="goal-info">
+                                    <div class="goal-name">Weekly Workouts</div>
+                                    <div class="goal-target">Target: 5 per week</div>
+                                </div>
+                                <div class="goal-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 80%;"></div>
+                                    </div>
+                                    <span class="progress-text">4/5 this week</span>
+                                </div>
+                            </div>
+                            <div class="goal-item">
+                                <div class="goal-info">
+                                    <div class="goal-name">Bench Press PR</div>
+                                    <div class="goal-target">Target: 225 lbs</div>
+                                </div>
+                                <div class="goal-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 89%;"></div>
+                                    </div>
+                                    <span class="progress-text">200/225 lbs</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Progress Chart -->
+                <div class="card card-fitness">
+                    <div class="card-header">
+                        <div class="card-title">Weight Progress</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="chart-container">
+                            <canvas id="weightChart" width="400" height="200"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="card card-fitness">
+                    <div class="card-header">
+                        <div class="card-title">Recent Activity</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-icon">💪</div>
+                                <div class="activity-info">
+                                    <div class="activity-name">Completed Push Day</div>
+                                    <div class="activity-time">2 hours ago</div>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">🏃</div>
+                                <div class="activity-info">
+                                    <div class="activity-name">30-minute HIIT session</div>
+                                    <div class="activity-time">Yesterday</div>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">🥗</div>
+                                <div class="activity-info">
+                                    <div class="activity-name">Logged healthy dinner</div>
+                                    <div class="activity-time">Yesterday</div>
+                                </div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">🏆</div>
+                                <div class="activity-info">
+                                    <div class="activity-name">Earned 5-Day Streak badge</div>
+                                    <div class="activity-time">2 days ago</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="fitpulse-script.js"></script>
+</body>
+</html>
