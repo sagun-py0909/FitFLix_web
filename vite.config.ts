@@ -46,12 +46,19 @@ export default defineConfig(({ mode }) => ({
       manifest: {
         name: 'Fitflix - Complete Fitness Ecosystem',
         short_name: 'Fitflix',
+<<<<<<< HEAD
         description: 'Your comprehensive fitness ecosystem - discover gyms, track nutrition, get AI coaching, and transform your health.',
+=======
+        description: 'Your comprehensive fitness ecosystem - gyms, apps, nutrition, and community.',
+>>>>>>> ed336ac2b9775814e9072f8db356b58b28a96b2a
         theme_color: '#f97316',
         background_color: '#ffffff',
         display: 'standalone',
         start_url: '/',
+<<<<<<< HEAD
         scope: '/',
+=======
+>>>>>>> ed336ac2b9775814e9072f8db356b58b28a96b2a
         icons: [
           {
             src: '/fitflix-logo.png',
@@ -67,12 +74,15 @@ export default defineConfig(({ mode }) => ({
             src: '/fitflix-logo.png',
             sizes: '512x512',
             type: 'image/png'
+<<<<<<< HEAD
           },
           {
             src: '/fitflix-logo.png',
             sizes: '512x512',
             type: 'image/png',
             purpose: 'maskable'
+=======
+>>>>>>> ed336ac2b9775814e9072f8db356b58b28a96b2a
           }
         ]
       },
@@ -82,7 +92,11 @@ export default defineConfig(({ mode }) => ({
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg,jpg,jpeg}'],
         navigateFallback: '/index.html',
+<<<<<<< HEAD
         navigateFallbackAllowlist: [/^\/(?!api).*$/], // Exclude API routes
+=======
+        navigateFallbackAllowlist: [/^\/$/, /^\/about$/, /^\/discover-gym$/, /^\/gym\/.*$/],
+>>>>>>> ed336ac2b9775814e9072f8db356b58b28a96b2a
         cleanupOutdatedCaches: true,
         skipWaiting: true,
         clientsClaim: true,
